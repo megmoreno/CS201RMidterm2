@@ -1,48 +1,53 @@
-angular.module('comment', [])
+angular.module('conference', [])
 .controller('MainCtrl', [
   '$scope','$http',
   function($scope, $http){
-$scope.comments = [
+$scope.talks = [
     ];
 
-  $scope.addComment = function() {
-	if($scope.formContent === '') { return; }
-      console.log("In addComment with "+$scope.formContent);
-      $scope.create({
-        title: $scope.formContent,
-        upvotes: 0,
-      });
-      $scope.formContent = '';      
-$scope.formContent='';
-    };
+$scope.addTalk = function() {
+  if($scope.title === '') { return; }
+    $scope.create({
+      title: $scope.title,
+      upvotes: 0,
+      year: $scope.year,
+      month: $scope.month,
+      imageUrl: $scope.imageUrl,
+      speaker: $scope.speaker 
+    });
+    $scope.title = ''; 
+    $scope.year = '';
+    $scope.month = '';
+    $scope.speaker = '';
+    $scope.imageUrl = '';
+};
+    
 $scope.incrementUpvotes = function(comment) {
-	 $scope.upvote(comment);
-    };
+    $scope.upvote(comment);
+};
 
-$scope.upvote = function(comment) {
-      return $http.put('/comments/' + comment._id + '/upvote')
+$scope.upvote = function(talk) {
+      return $http.put('/talks/' + talk._id + '/upvote')
         .success(function(data){
-          console.log("upvote worked");
-          comment.upvotes += 1;
+          talk.upvotes += 1;
         });
-    };
+};
 
 $scope.getAll = function() {
-    return $http.get('/comments').success(function(data){
-      angular.copy(data, $scope.comments);
+    return $http.get('/talks').success(function(data){
+      angular.copy(data, $scope.talks);
     });
   };
 
- $scope.create = function(comment) {
-    return $http.post('/comments', comment).success(function(data){
-      $scope.comments.push(data);
+ $scope.create = function(talk) {
+    return $http.post('/talks', talk).success(function(data){
+      $scope.talks.push(data);
     });
   };
 
  $scope.delete = function(comment) {
-      $http.delete('/comments/' + comment._id )
+      $http.delete('/talks/' + talk._id )
         .success(function(data){
-          console.log("delete worked");
         });
       $scope.getAll();
     };

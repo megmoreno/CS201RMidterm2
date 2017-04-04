@@ -7,48 +7,47 @@ router.get('/', function(req, res, next) {
 });
 
 var mongoose = require('mongoose');
-var Comment = mongoose.model('Comment');
+var Talk = mongoose.model('Talk');
 
-router.get('/comments', function(req, res, next) {
-  Comment.find(function(err, comments){
+router.get('/talks', function(req, res, next) {
+  Talk.find(function(err, talks){
     if(err){ return next(err); }
-    res.json(comments);
+    res.json(talks);
   });
 });
 
-router.post('/comments', function(req, res, next) {
-  var comment = new Comment(req.body);
-  comment.save(function(err, comment){
+router.post('/talks', function(req, res, next) {
+  var comment = new Talk(req.body);
+  talk.save(function(err, talk){
     if(err){ return next(err); }
-    res.json(comment);
+    res.json(talk);
   });
 });
 
-router.param('comment', function(req, res, next, id) {
-  var query = Comment.findById(id);
-  query.exec(function (err, comment){
+router.param('talk', function(req, res, next, id) {
+  var query = Talk.findById(id);
+  query.exec(function (err, talk){
     if (err) { return next(err); }
-    if (!comment) { return next(new Error("can't find comment")); }
-    req.comment = comment;
+    if (!talk) { return next(new Error("can't find talk")); }
+    req.talk = talk;
     return next();
   });
 });
 
-router.get('/comments/:comment', function(req, res) {
-  res.json(req.comment);
+router.get('/talk/:talk', function(req, res) {
+  res.json(req.talk);
 });
 
-router.put('/comments/:comment/upvote', function(req, res, next) {
-  req.comment.upvote(function(err, comment){
+router.put('/talks/:talk/upvote', function(req, res, next) {
+  req.talk.upvote(function(err, talk){
     if (err) { return next(err); }
-    res.json(comment);
+    res.json(talk);
   });
 });
 
-router.delete('/comments/:comment', function(req, res) {
-  console.log("in Delete");
-  req.comment.remove();
-  res.json(req.comment);
+router.delete('/talks/:talk', function(req, res) {
+  req.talk.remove();
+  res.json(req.talk);
 });
 
 module.exports = router;
