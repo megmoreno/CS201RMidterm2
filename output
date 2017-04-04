@@ -1,0 +1,19 @@
+nohup: ignoring input
+[0mGET /comments [32m200 [0m26.269 ms - 206[0m
+[0mGET / [32m200 [0m37.647 ms - 970[0m
+[0mGET /javascripts/app.js [36m304 [0m1.096 ms - -[0m
+[0mGET / [36m304 [0m3.269 ms - -[0m
+[0mGET /comments [36m304 [0m7.326 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m0.379 ms - -[0m
+[0mGET / [32m200 [0m3.792 ms - 970[0m
+[0mGET / [32m200 [0m2.318 ms - 970[0m
+[0mGET /javascripts/app.js [32m200 [0m3.724 ms - 1232[0m
+[0mGET /favicon.ico [33m404 [0m513.203 ms - 1802[0m
+[0mGET / [36m304 [0m0.521 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m0.365 ms - -[0m
+[0mGET / [32m200 [0m7.199 ms - 970[0m
+[0mGET /javascripts/app.js [36m304 [0m1.729 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m64.583 ms - 1802[0m
+[0mGET / [36m304 [0m0.564 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m0.401 ms - -[0m
+[0mGET / [32m200 [0m2.249 ms - 970[0m
