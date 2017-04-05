@@ -22,12 +22,14 @@
     <button type="submit">Add Talk</button>
   </form>
 
-<div ng-repeat="talk in talks | orderBy: ['-upvotes','year','month']">
-    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(talk)"></span>
-    <img src="talk.imageUrl"/>
-  {{Speaker}}& bull;{{<em>talk.title</em>}} ({{talk.month}} {{talk.year}}) - upvotes: {{talk.upvotes}}
+<div class="row">
+<div class="col-xs-6 col-md-3 thumbnail" ng-repeat="talk in talks | orderBy: ['-upvotes','year','month']">
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(talk)"></span> - upvotes: {{talk.upvotes}} - {{talk.month}} {{talk.year}}
+    <img class="thumbnail" ng-src="{{talk.imageUrl}}"/>
+  <b>{{talk.speaker}}</b> - <em>{{talk.title}}</em>
     <span class="glyphicon glyphicon-remove" ng-click="delete(talk)"></span>
   </div>
+</div>
 </div>
 </div>
 </body>

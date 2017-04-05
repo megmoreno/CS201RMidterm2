@@ -17,7 +17,7 @@ router.get('/talks', function(req, res, next) {
 });
 
 router.post('/talks', function(req, res, next) {
-  var comment = new Talk(req.body);
+  var talk = new Talk(req.body);
   talk.save(function(err, talk){
     if(err){ return next(err); }
     res.json(talk);

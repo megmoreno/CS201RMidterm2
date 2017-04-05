@@ -45,12 +45,13 @@ $scope.getAll = function() {
     });
   };
 
- $scope.delete = function(comment) {
+ $scope.delete = function(talk) {
       $http.delete('/talks/' + talk._id )
         .success(function(data){
         });
       $scope.getAll();
     };
+$scope.getAll();
 
 }
 ]);
